@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Scholarship Portal - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-trophy"></i>
+                <span>Sports Scholarship Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="apply.html" class="nav-link">Apply</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="status.html" class="nav-link">Application Status</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Unlock Your Athletic Potential</h1>
+                <p>Discover and apply for sports scholarships that can help you achieve your dreams</p>
+                <a href="apply.html" class="cta-button">Apply Now</a>
+            </div>
+        </section>
+
+        <section class="scholarships-section">
+            <div class="container">
+                <h2>Available Scholarships</h2>
+                <div class="filters">
+                    <select id="sportFilter" class="filter-select">
+                        <option value="">All Sports</option>
+                        <option value="Football">Football</option>
+                        <option value="Basketball">Basketball</option>
+                        <option value="Tennis">Tennis</option>
+                        <option value="Swimming">Swimming</option>
+                        <option value="Track">Track & Field</option>
+                        <option value="Soccer">Soccer</option>
+                        <option value="Baseball">Baseball</option>
+                        <option value="Volleyball">Volleyball</option>
+                    </select>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="Academic">Academic Excellence</option>
+                        <option value="Athletic">Athletic Performance</option>
+                        <option value="Need-based">Need-based</option>
+                        <option value="Merit">Merit-based</option>
+                    </select>
+                </div>
+                <div id="scholarshipsContainer" class="scholarships-grid">
+                    <!-- Scholarships will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <h2>Why Choose Our Portal?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-search"></i>
+                        <h3>Easy Discovery</h3>
+                        <p>Find scholarships that match your sport, academic level, and financial needs</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Quick Application</h3>
+                        <p>Streamlined application process with real-time status tracking</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Secure & Reliable</h3>
+                        <p>Your personal information is protected with industry-standard security</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Expert Support</h3>
+                        <p>Get help from our team of scholarship experts throughout the process</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sports Scholarship Portal</h3>
+                    <p>Empowering athletes to achieve their academic and athletic dreams through accessible scholarship opportunities.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="apply.html">Apply</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="status.html">Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> info@sportsscholarship.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sports Scholarship Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

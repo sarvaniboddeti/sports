@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Status - Sports Scholarship Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-trophy"></i>
+                <span>Sports Scholarship Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="apply.html" class="nav-link">Apply</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="status.html" class="nav-link active">Application Status</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="status-container">
+            <div class="status-header">
+                <h1>Application Status</h1>
+                <p>Track the progress of your scholarship applications</p>
+            </div>
+
+            <div class="status-content">
+                <!-- Login Required Section -->
+                <div id="loginRequired" class="login-required">
+                    <div class="login-prompt">
+                        <i class="fas fa-lock"></i>
+                        <h3>Login Required</h3>
+                        <p>Please log in to view your application status</p>
+                        <a href="login.html" class="btn-primary">Login Now</a>
+                    </div>
+                </div>
+
+                <!-- Application Status Section (Hidden by default) -->
+                <div id="applicationStatus" class="application-status" style="display: none;">
+                    <div class="status-summary">
+                        <div class="summary-card">
+                            <div class="summary-icon pending">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="summary-content">
+                                <h4>Pending</h4>
+                                <span id="pendingCount" class="count">0</span>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon under-review">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="summary-content">
+                                <h4>Under Review</h4>
+                                <span id="underReviewCount" class="count">0</span>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon approved">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="summary-content">
+                                <h4>Approved</h4>
+                                <span id="approvedCount" class="count">0</span>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon rejected">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="summary-content">
+                                <h4>Rejected</h4>
+                                <span id="rejectedCount" class="count">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="applications-list">
+                        <h3>Your Applications</h3>
+                        <div id="applicationsContainer">
+                            <!-- Applications will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sports Scholarship Portal</h3>
+                    <p>Empowering athletes to achieve their academic and athletic dreams through accessible scholarship opportunities.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="apply.html">Apply</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="status.html">Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> info@sportsscholarship.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sports Scholarship Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/status.js"></script>
+</body>
+</html>
