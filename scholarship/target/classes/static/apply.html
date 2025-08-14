@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Scholarship - Sports Scholarship Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-trophy"></i>
+                <span>Sports Scholarship Portal</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="apply.html" class="nav-link active">Apply</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="status.html" class="nav-link">Application Status</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="apply-container">
+            <div class="apply-header">
+                <h1>Apply for Scholarship</h1>
+                <p>Complete your application to be considered for available scholarships</p>
+            </div>
+
+            <div class="apply-content">
+                <div class="scholarship-selection">
+                    <h3>Step 1: Select a Scholarship</h3>
+                    <div class="scholarship-list" id="scholarshipList">
+                        <!-- Scholarships will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="application-form" id="applicationForm" style="display: none;">
+                    <h3>Step 2: Complete Application</h3>
+                    <form id="scholarshipApplicationForm">
+                        <div class="form-section">
+                            <h4>Personal Information</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullName">Full Name</label>
+                                    <input type="text" id="fullName" name="fullName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dateOfBirth">Date of Birth</label>
+                                    <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4>Academic Information</h4>
+                            <div class="form-group">
+                                <label for="currentSchool">Current School/University</label>
+                                <input type="text" id="currentSchool" name="currentSchool" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="gpa">GPA</label>
+                                    <input type="number" id="gpa" name="gpa" step="0.01" min="0" max="4" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="graduationYear">Expected Graduation Year</label>
+                                    <input type="number" id="graduationYear" name="graduationYear" min="2024" max="2030" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="academicPerformance">Academic Achievements & Honors</label>
+                                <textarea id="academicPerformance" name="academicPerformance" rows="4" required 
+                                    placeholder="Describe your academic achievements, honors, awards, and any relevant academic activities..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4>Sports Information</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="primarySport">Primary Sport</label>
+                                    <input type="text" id="primarySport" name="primarySport" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="position">Position/Event</label>
+                                    <input type="text" id="position" name="position" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="sportsAchievements">Sports Achievements & Records</label>
+                                <textarea id="sportsAchievements" name="sportsAchievements" rows="4" required
+                                    placeholder="Describe your sports achievements, records, championships, and athletic honors..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="teamExperience">Team Experience & Leadership</label>
+                                <textarea id="teamExperience" name="teamExperience" rows="3"
+                                    placeholder="Describe your team experience, leadership roles, and contributions to your team..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4>Financial Information</h4>
+                            <div class="form-group">
+                                <label for="financialNeed">Financial Need Statement</label>
+                                <textarea id="financialNeed" name="financialNeed" rows="4" required
+                                    placeholder="Explain your financial situation and why you need this scholarship..."></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="familyIncome">Family Annual Income</label>
+                                    <select id="familyIncome" name="familyIncome" required>
+                                        <option value="">Select Income Range</option>
+                                        <option value="Under $25,000">Under $25,000</option>
+                                        <option value="$25,000 - $50,000">$25,000 - $50,000</option>
+                                        <option value="$50,000 - $75,000">$50,000 - $75,000</option>
+                                        <option value="$75,000 - $100,000">$75,000 - $100,000</option>
+                                        <option value="Over $100,000">Over $100,000</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="otherFinancialAid">Other Financial Aid</label>
+                                    <input type="text" id="otherFinancialAid" name="otherFinancialAid" 
+                                        placeholder="List any other scholarships or financial aid...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4>Personal Statement</h4>
+                            <div class="form-group">
+                                <label for="personalStatement">Personal Statement</label>
+                                <textarea id="personalStatement" name="personalStatement" rows="6" required
+                                    placeholder="Tell us about yourself, your goals, and why you deserve this scholarship. Include your passion for sports, academic goals, and how this scholarship will help you achieve them..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h4>Documents</h4>
+                            <div class="form-group">
+                                <label for="transcript">Academic Transcript</label>
+                                <input type="file" id="transcript" name="transcript" accept=".pdf,.doc,.docx" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sportsResume">Sports Resume/Portfolio</label>
+                                <input type="file" id="sportsResume" name="sportsResume" accept=".pdf,.doc,.docx">
+                            </div>
+                            <div class="form-group">
+                                <label for="recommendationLetter">Recommendation Letter</label>
+                                <input type="file" id="recommendationLetter" name="recommendationLetter" accept=".pdf,.doc,.docx">
+                            </div>
+                            <div class="form-group">
+                                <label for="additionalDocuments">Additional Documents</label>
+                                <input type="file" id="additionalDocuments" name="additionalDocuments" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="goBack()">Back</button>
+                            <button type="submit" class="btn-primary">Submit Application</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sports Scholarship Portal</h3>
+                    <p>Empowering athletes to achieve their academic and athletic dreams through accessible scholarship opportunities.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="apply.html">Apply</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="status.html">Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> info@sportsscholarship.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sports Scholarship Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/apply.js"></script>
+</body>
+</html>

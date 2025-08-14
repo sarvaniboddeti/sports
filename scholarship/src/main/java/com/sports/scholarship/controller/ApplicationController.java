@@ -5,75 +5,76 @@ import com.sports.scholarship.entity.ApplicationStatus;
 import com.sports.scholarship.entity.ScholarshipApplication;
 import com.sports.scholarship.service.ScholarshipApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
+// Add this import if you have a custom exception, or use org.springframework.web.server.ResponseStatusException
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/applications")
 @CrossOrigin(origins = "*")
 public class ApplicationController {
-    
+
     @Autowired
     private ScholarshipApplicationService applicationService;
-    
+
     @PostMapping
-    public ResponseEntity<?> createApplication(@RequestParam Long userId, @RequestBody ScholarshipApplicationDto applicationDto) {
-        try {
-            ScholarshipApplication application = applicationService.createApplication(userId, applicationDto);
-            return ResponseEntity.ok(application);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<ScholarshipApplication> createApplication(
+            @RequestParam Long userId,
+            @RequestBody ScholarshipApplicationDto applicationDto) {
+        // The service will throw an exception on failure, which the handler will catch.
+        ScholarshipApplication application = applicationService.createApplication(userId, applicationDto);
+        // Use 201 Created for successful POST requests.
+        return ResponseEntity.status(HttpStatus.CREATED).body(application);
     }
-    
+
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<ScholarshipApplication>> getUserApplications(@PathVariable Long userId) {
         List<ScholarshipApplication> applications = applicationService.getUserApplications(userId);
         return ResponseEntity.ok(applications);
     }
     
+    @GetMapping("/{id}")
+    public ResponseEntity<ScholarshipApplication> getApplicationById(@PathVariable Long id) {
+        // Use ResponseStatusException for not found
+        return applicationService.getApplicationById(id)
+                .map(ResponseEntity::ok)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Application not found with id: " + id));
+    }
+    // Add missing endpoint for getScholarshipApplications
     @GetMapping("/scholarship/{scholarshipId}")
     public ResponseEntity<List<ScholarshipApplication>> getScholarshipApplications(@PathVariable Long scholarshipId) {
         List<ScholarshipApplication> applications = applicationService.getScholarshipApplications(scholarshipId);
         return ResponseEntity.ok(applications);
     }
-    
-    @GetMapping("/{id}")
-    public ResponseEntity<ScholarshipApplication> getApplicationById(@PathVariable Long id) {
-        Optional<ScholarshipApplication> application = applicationService.getApplicationById(id);
-        return application.map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-    
+
     @PutMapping("/{id}/status")
     public ResponseEntity<ScholarshipApplication> updateApplicationStatus(
             @PathVariable Long id,
             @RequestParam ApplicationStatus status,
             @RequestParam(required = false) String comments) {
-        try {
-            ScholarshipApplication application = applicationService.updateApplicationStatus(id, status, comments);
-            return ResponseEntity.ok(application);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+        // The service will throw an exception if the application is not found.
+        ScholarshipApplication application = applicationService.updateApplicationStatus(id, status, comments);
+        return ResponseEntity.ok(application);
     }
-    
-    @PutMapping("/{id}/withdraw")
+
+    @DeleteMapping("/{id}/withdraw")
     public ResponseEntity<Void> withdrawApplication(@PathVariable Long id, @RequestParam Long userId) {
-        try {
-            applicationService.withdrawApplication(id, userId);
-            return ResponseEntity.ok().build();
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().build();
-        }
+        // The service handles logic for checking ownership and validity.
+        applicationService.withdrawApplication(id, userId);
+        // Use 204 No Content for successful actions that don't return a body.
+        return ResponseEntity.noContent().build();
     }
-    
+
     @GetMapping("/status/{status}")
     public ResponseEntity<List<ScholarshipApplication>> getApplicationsByStatus(@PathVariable ApplicationStatus status) {
         List<ScholarshipApplication> applications = applicationService.getApplicationsByStatus(status);
         return ResponseEntity.ok(applications);
     }
+
+    // Other endpoints like getScholarshipApplications remain the same...
 }
